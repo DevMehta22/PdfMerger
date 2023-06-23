@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <title>Pdf-X</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+        *,
+        *::before,
+        *::after {
+        box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+        padding: 0;
+        background-color: #010101;
+        font-family: "Ubuntu", sans-serif;
+        }
+
+        a {
+        text-decoration: none;
+        }
+
+        button {
+        border: 0;
+        outline: none;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+        }
+
+        .navbar {
+        height: 90px;
+        background-color: hsl(0, 0%, 10%);
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .navbar .logo i {
+        color: #0aa5ff;
+        font-size: 22px;
+        }
+
+        .navbar .logo a {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+        margin-left: 12px;
+        }
+
+        .menu {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        }
+
+        .menu-links {
+        display: flex;
+        gap: 24px;
+        border-right: 1px solid #999999;
+        padding-inline: 24px;
+        }
+
+        .menu-links a {
+        font-weight: 500;
+        color: #999999;
+        padding: 8px 16px;
+        }
+        .menu-links a:hover {
+        color: white;
+        }
+        .log-in {
+        font-weight: 500;
+        padding: 12px 22px;
+        background-color: transparent;
+        color: #999999;
+        border-radius: 10px;
+        border: 2px solid #0aa5ff;
+        transition: 0.2s;
+        }
+        .log-in:hover {
+        background-color: #0aa5ff;
+        color: white;
+        }
+
+        .menu-btn {
+        font-size: 32px;
+        color: white;
+        display: none;
+        cursor: pointer;
+        }
+        p{
+          color: white;
+          font-size: xx-large;
+          font-weight: bolder;
+          text-align: center;
+          margin: 40px;
+          padding-top: 20px;
+          font-family:cursive;
+          text-shadow: 7px 10px 5px aqua;
+        }
+        .form-group{
+            color: white;
+        }
+        .form-group{
+          text-align: center;
+          
+          margin-top: 5%;
+        }
+        #file{
+          padding: 20px;
+        }
+        .submit{
+          padding: 5px;
+          width: 90px;
+          background-color: rgb(244, 228, 228);
+          box-shadow:0px 0px 7px aqua;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold;
+          font-size: medium;
+          text-transform: uppercase;
+          text-shadow: 0px 0px 10px aqua;
+        }
+        
+        
+        label{
+          color: aqua;
+          text-shadow: 0px 0px 10px white;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+        }
+        .file-input{
+          font-family:serif;
+          font-size: medium;
+        }
+        .footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.social-icon{
+  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+
+}
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item{
+  list-style: none;
+}
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+        @media (max-width: 53rem) {
+        .menu {
+            display: none;
+        }
+
+        .menu-btn {
+            display: block;
+        }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+          <i class="fa-solid fa-font-awesome"></i>
+          <a href="#">Pdf-X</a>
+        </div>
+        <div class="menu">
+          <div class="menu-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Blog</a>
+          </div>
+          <button class="log-in">Log In</button>
+        </div>
+        <div class="menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+    <p>Now merge any of your Pdf files in just 1 step</p>
+    <div class="container">
+        <form method="post" action="/merge" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select Files to be merged:<br></label>
+                <input type="file" name="pdfs" class="file-input" id="file" multiple accept=".pdf">
+                <br><input type="submit" value="submit" class="submit">
+            </div>
+        </form>
+        <footer class="footer">
+          <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+          </div>
+          <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a></li>
+          </ul>
+          <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+      
+          </ul>
+          <p>&copy;2023 Dev Mehta | All Rights Reserved</p>
+        </footer>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    </div>
+</body>
+</html>
